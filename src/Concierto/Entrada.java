@@ -32,22 +32,20 @@ public class Entrada {
     {
         numEntradas++;
         String cabecera = "ENT";
-        String codigo = String.format("%04d", numEntradas);
+        String codigo = String.format("%05d", numEntradas);
 
         return cabecera+codigo;
     }
-    public void mostrarDatos()
+    public String mostrarDatos()
     {
-        System.out.println(
-                "\n Grupo: "+ this.grupo+
+        String mostrar=
+                "\n Grupo: "+ grupo+
                 "\n N° Entrada: "+ this.codigo+
-                "\n Correo: "+ this.correo+
+                "\n Correo: "+ correo+
                 "\n Fecha de compra: "+ this.fechaHoraCompra+
-                "\n Correo: "+ this.fechaHoraInicio+
-                "\n Correo: "
+                "\n Fecha de concierto: "+ this.fechaHoraInicio;
+        return mostrar;
 
-
-        );
     }
 
 
