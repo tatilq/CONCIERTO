@@ -43,7 +43,8 @@ public class Entrada {
                 "\n N° Entrada: "+ this.codigo+
                 "\n Correo: "+ correo+
                 "\n Fecha de compra: "+ this.fechaHoraCompra+
-                "\n Fecha de concierto: "+ this.fechaHoraInicio;
+                "\n Fecha de concierto: "+ this.fechaHoraInicio+
+                        "\n Tipo de Entrada: "+ this.TIPO_ENTRADA;
         return mostrar;
 
     }

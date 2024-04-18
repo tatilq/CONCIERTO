@@ -51,7 +51,18 @@ public class Main {
 
     public static Entrada generarEntrada()
     {
-        Entrada entradaAventura = new Entrada("VIP", "tati34che@gmail.com");
+        Scanner sc = new Scanner(System.in);
+
+        String correo = "";
+        String tipoEntrada = "";
+
+        System.out.println("Ingres el correo: ");
+        correo=sc.nextLine();
+        System.out.println("Ingresa tu tipo de entrada");
+        tipoEntrada=sc.nextLine();
+
+
+        Entrada entradaAventura = new Entrada(tipoEntrada, correo);
         System.out.println("LAS ENTRADAS SON: ");
         System.out.println(entradaAventura.mostrarDatos());
         return entradaAventura;
