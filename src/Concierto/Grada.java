@@ -1,16 +1,23 @@
 package Concierto;
 
-public class Grada {
+public class Grada extends Entrada{
 
-    public final String zona;
-    public final int asiento;
-    public static final double suplemento = 10;
-    public  static final int LIMITE_ESTE=2000;
-    public  static final int LIMITE_OESTE=2000;
-    public  static final int LIMITE_SUR=2000;
+    private final String zona ="";
+    private final int asiento = 0;
+    private static final double suplemento = 10;
+    private  static final int LIMITE_ESTE=2000;
+    private  static final int LIMITE_OESTE=2000;
+    private  static final int LIMITE_SUR=2000;
 
-    public Grada(String zona, int asiento) {
-        this.zona = zona;
-        this.asiento = asiento;
+    public Grada(String tipoEntrada, String correo) {
+        super(tipoEntrada, correo);
+    }
+    public double calculaPrecioEntrada() {
+        return this.getPrecio()+ suplemento;
+    }
+
+    Tipo getTipoEntrada()
+    {
+        return Tipo.GRADA;
     }
 }

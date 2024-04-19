@@ -1,6 +1,15 @@
 package Concierto;
 
-public class Pista {
+public class Pista extends Entrada {
 
-    public static final int LIMITE_PISTA = 2900;
+    private static final int LIMITE_PISTA = 2900;
+
+    public Pista(String tipoEntrada, String correo) {
+        super(tipoEntrada, correo);
+    }
+
+    Tipo getTipoEntrada()
+    {
+        return Tipo.PISTA;
+    }
 }

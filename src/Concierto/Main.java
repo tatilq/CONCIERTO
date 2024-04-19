@@ -9,8 +9,13 @@ public class Main {
 
         int opcion=0;
         char rpta = 'n';
-        //Entrada entrada1 = new Entrada("00001", "VIP");
-        ArrayList<Entrada> romeo= new ArrayList<>();
+
+        ArrayList<Grada> entradaGrada= new ArrayList<>();
+        ArrayList<Pista> entradaPista= new ArrayList<>();
+        ArrayList<VIP> entradaVip= new ArrayList<>();
+
+        //Crear lista de entradas dispnibles
+        //Crear lista de entradas vendidas
 
         Scanner sc = new Scanner(System.in);
 
@@ -20,7 +25,7 @@ public class Main {
             System.out.println("========================");
             System.out.println("1.- Comprar entradas");
             System.out.println("2.- Mostrar entradas vendidas");
-            System.out.println("2.- Mostrar entradas");
+            System.out.println("3.- Mostrar todas las entradas");
 
             System.out.println("Ingresar una opcion");
 
@@ -28,20 +33,47 @@ public class Main {
             switch(opcion)
             {
                 case 1:
-
-                    Entrada a = generarEntrada();
-                    romeo.add(a);
                     System.out.println("Deseas continuar s/n");
-
                     rpta = sc.next().charAt(0);
+                    String correo = "";
+
+                    //Grada g = new Grada("", "");
+                    //Pista p = new Pista("", "");
+                    //Pista v = new Pista("", "");
+
+                    System.out.println("Ingres el correo: ");
+                    correo = sc.nextLine();
+                    System.out.println("Selecciona el tipo de entrada");
+                    int c=0;
+                    for (Entrada.Tipo tipo: Entrada.Tipo.values()){
+                        c++;
+                        System.out.println(c+".- "+tipo);
+                    }
+                    int opcionTipo= 0;
+                    opcionTipo=sc.nextInt();
+                    switch(opcionTipo)
+                    {
+                        case 1:
+                            generarEntraPista(correo);
+                            entradaGrada.add(generarEntradaGrada(correo));
+                            break;
+                        case 2:
+
+                            generarEntradaGrada(correo);
+                            entradaPista.add(generarEntraPista(correo));
+                            break;
+                        case 3:
+
+                            generarEntraVIP(correo);
+                            entradaVip.add(generarEntraVIP(correo));
+                            break;
+                    }
 
                     break;
-                case 2:
+                case 3:
 
-                    mostrarTodasEntradas(romeo);
+                    //mostrarTodasEntradas(romeo);
                     break;
-
-
             }
 
         }
@@ -49,30 +81,32 @@ public class Main {
 
     }
 
-    public static Entrada generarEntrada()
-    {
-        Scanner sc = new Scanner(System.in);
-
-        String correo = "";
-        String tipoEntrada = "";
-
-        System.out.println("Ingres el correo: ");
-        correo=sc.nextLine();
-        System.out.println("Ingresa tu tipo de entrada");
-        tipoEntrada=sc.nextLine();
-
-
-        Entrada entradaAventura = new Entrada(tipoEntrada, correo);
+    public static Grada generarEntradaGrada(String correo) {
+        Grada entradaGrada = new Grada("Grada", correo);;
         System.out.println("LAS ENTRADAS SON: ");
-        System.out.println(entradaAventura.mostrarDatos());
-        return entradaAventura;
+        return entradaGrada;
+
+    }
+    public static Pista generarEntraPista(String correo) {
+        Pista entradaPista = new Pista("PISTA", correo);
+        System.out.println("LAS ENTRADAS SON: ");
+        return entradaPista;
+
+    }
+    public static VIP generarEntraVIP(String correo) {
+        VIP entradaVip = new VIP("VIP",correo);;
+        System.out.println("LAS ENTRADAS SON: ");
+        return entradaVip;
 
     }
     public static void mostrarTodasEntradas( ArrayList<Entrada> entrada)
     {
+        System.out.println("----LISTA DE ENTRADAS A TOUR ROMEO SANTOS-----");
         for(Entrada entradas : entrada)
         {
             System.out.println(entradas.mostrarDatos());
         }
+        System.out.println("---------------------------------------------");
     }
+
 }
